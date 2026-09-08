@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+
+data/ml-20m/README.txt
+data/ml-20m/genome-scores.csv
+data/ml-20m/genome-tags.csv
+data/ml-20m/links.csv
+data/ml-20m/movies.csv
+data/ml-20m/ratings.csv
