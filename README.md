@@ -188,11 +188,15 @@ I risultati mostrano un miglioramento complessivo della Query Expansion rispetto
 
 Il miglioramento è particolarmente evidente per **Precision@50**, che passa da:
 
+```text
 0.012 → 0.178
+```
 
 e per **Recall@50**, che passa da:
 
+```text
 0.0067 → 0.0915
+```
 
 Il comportamento, tuttavia, non è uniforme per tutte le query.
 
@@ -202,12 +206,16 @@ Il comportamento, tuttavia, non è uniforme per tutte le query.
 
 Un caso particolarmente significativo è:
 
+```text
 remade → remake
+```
 
 Per questa coppia:
 
+```text
 P@10: 0.000 → 0.800
 P@50: 0.000 → 0.760
+```
 
 L'espansione permette quindi di introdurre il termine `remake`, consentendo al sistema di recuperare documenti che utilizzano un termine differente dalla query originale.
 
@@ -215,16 +223,19 @@ Sono presenti anche casi in cui l'espansione non produce miglioramenti o può pe
 
 Un esempio è:
 
+```text
 united states → usa
+```
 
 In questo caso l'espansione di WordNet può introdurre termini più generici o semanticamente ambigui, aumentando il rumore nella rappresentazione della query.
 
-Questo evidenzia una limitazione dell'approccio: **l'espansione automatica non garantisce che tutti i termini aggiunti siano utili per il problema di Information Retrieval considerato.** 
+Questo evidenzia una limitazione dell'approccio: **l'espansione automatica non garantisce che tutti i termini aggiunti siano utili per il problema di Information Retrieval considerato.**
 
 ---
 
 ## Struttura del progetto
 
+```text
 SII-Vocabulary-Mismatch/
 │
 ├── data/
@@ -241,26 +252,27 @@ SII-Vocabulary-Mismatch/
 │
 ├── requirements.txt
 └── README.md
+```
 
 ### Descrizione degli script
 
-`explore_data.py`
+**`explore_data.py`**
 
 Effettua l'analisi iniziale del dataset e costruisce i documenti a partire dai tag associati ai film.
 
-`find_query_pairs.py`
+**`find_query_pairs.py`**
 
 Analizza le possibili coppie di tag semanticamente correlate e caratterizzate da un basso overlap.
 
-`check_pair.py`
+**`check_pair.py`**
 
 Script di supporto utilizzato durante l'analisi per verificare singole coppie di termini e il relativo overlap nei documenti.
 
-`search.py`
+**`search.py`**
 
 Implementa il motore di ricerca, la costruzione dell'indice TF-IDF, la ricerca baseline e la Query Expansion.
 
-`evaluate_search.py`
+**`evaluate_search.py`**
 
 Esegue gli esperimenti sulle coppie query-target e calcola Precision e Recall a diversi valori di K.
 
@@ -272,15 +284,21 @@ Esegue gli esperimenti sulle coppie query-target e calcola Precision e Recall a 
 
 Creazione dell'ambiente:
 
+```bash
 python -m venv .venv
+```
 
 Attivazione su Windows PowerShell:
 
+```powershell
 .venv\Scripts\Activate.ps1
+```
 
 Installazione delle dipendenze:
 
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
@@ -288,17 +306,23 @@ pip install -r requirements.txt
 
 Per analizzare il dataset:
 
+```bash
 python explore_data.py
+```
 
 Per eseguire gli esperimenti:
 
+```bash
 python evaluate_search.py
+```
 
 Il programma stampa i risultati della Baseline e della Query Expansion e calcola le metriche Precision@K e Recall@K.
 
 Il grafico comparativo delle metriche viene salvato nella cartella:
 
+```text
 results/
+```
 
 ---
 
