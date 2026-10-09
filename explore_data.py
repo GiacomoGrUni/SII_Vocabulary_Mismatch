@@ -16,13 +16,13 @@ tags = pd.read_csv(path)
 
 print("Righe iniziali:", len(tags))
 
-# Eliminiamo le righe senza tag
+# Eliminazione righe senza tag
 tags = tags.dropna(subset=["tag"])
 
 print("Righe dopo rimozione tag mancanti:", len(tags))
 
 
-# Convertiamo tutti i tag in minuscolo
+# Conversione tag in minuscolo
 tags["tag"] = tags["tag"].str.lower()
 
 
@@ -38,7 +38,7 @@ documents = (
 )
 
 
-# Rinominiamo la colonna dei tag
+# Rinomina della colonna dei tag
 documents = documents.rename(
     columns={"tag": "document"}
 )

@@ -10,10 +10,10 @@ path = "data/ml-20m/tags.csv"
 
 tags = pd.read_csv(path)
 
-# Rimuoviamo i tag mancanti
+# Rimozione tag mancanti
 tags = tags.dropna(subset=["tag"])
 
-# Normalizziamo
+# Normalizzazione
 tags["tag"] = tags["tag"].str.lower()
 
 
@@ -25,7 +25,7 @@ print("Numero di tag nel dataset:", len(dataset_tags))
 
 
 # ----------------------------------------
-# CERCHIAMO COPPIE CON WORDNET
+# RICERCA COPPIE CON WORDNET
 # ----------------------------------------
 
 candidate_pairs = set()
@@ -33,11 +33,11 @@ candidate_pairs = set()
 
 for tag in dataset_tags:
 
-    # Ci interessano per ora solo tag composti da una parola
+    # Filtro per soli tag composti da una parola
     if " " in tag:
         continue
 
-    # Cerchiamo i synset WordNet
+    # Ricerca synset WordNet
     synsets = wordnet.synsets(tag)
 
     for syn in synsets:
@@ -46,11 +46,11 @@ for tag in dataset_tags:
 
             synonym = lemma.name().replace("_", " ").lower()
 
-            # Evitiamo la coppia identica
+            # Scarto coppia identica
             if synonym == tag:
                 continue
 
-            # Controlliamo se il sinonimo esiste nel dataset
+            # Controllo se il sinonimo esiste nel dataset
             if synonym in dataset_tags:
 
                 pair = tuple(sorted([tag, synonym]))
@@ -113,7 +113,7 @@ for tag_a, tag_b in candidate_pairs:
 
 
 # ----------------------------------------
-# ORDINIAMO PER JACCARD CRESCENTE
+# ORDINAMENTO PER JACCARD CRESCENTE
 # ----------------------------------------
 
 interesting_pairs.sort(

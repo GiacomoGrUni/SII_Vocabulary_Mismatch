@@ -170,6 +170,33 @@ def evaluate_pair(query, target):
     print("\nQuery espansa:")
     print(expanded_query)
 
+     # ----------------------------
+    # CONTROLLO TOP 10 BASELINE
+    # ----------------------------
+    '''
+    print("\nTop 10 Baseline:")
+
+    top_10 = baseline_ranking[:10]
+
+    for idx, score in top_10:
+
+        movie_id = movie_ids[idx]
+
+        if movie_id in gold_set:
+            print(
+                f"MovieID: {movie_id} | "
+                f"Score: {score:.6f} | "
+                f"GOLD HIT"
+            )
+        else:
+            print(
+                f"MovieID: {movie_id} | "
+                f"Score: {score:.6f}"
+            )
+
+    print("Score min Top 10:", top_10[-1][1])
+    '''
+
     # ----------------------------
     # RISULTATI
     # ----------------------------

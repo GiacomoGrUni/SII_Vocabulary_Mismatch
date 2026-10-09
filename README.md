@@ -115,8 +115,6 @@ La Query Expansion è implementata utilizzando **WordNet** tramite la libreria N
 
 Per ogni termine della query vengono ricercati i synset disponibili e vengono estratti i lemma associati.
 
-Gli underscore presenti nei lemma vengono sostituiti con spazi.
-
 Ad esempio, per alcune query WordNet può produrre termini come:
 
 ```text
@@ -169,7 +167,7 @@ Per confrontare Baseline e Query Expansion sono state utilizzate:
 
 La precision misura la proporzione di documenti rilevanti tra quelli recuperati nei primi K risultati.
 
-Il recall misura invece la proporzione dei documenti rilevanti presenti nel gold set che vengono recuperati nei primi K risultati.
+La recall misura invece la proporzione dei documenti rilevanti presenti nel gold set che vengono recuperati nei primi K risultati.
 
 ---
 
